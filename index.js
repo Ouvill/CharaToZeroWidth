@@ -16,6 +16,21 @@ const binaryToZeroWidth = binary => (
     }).join('﻿') // invisible &#65279;
 );
 
+const zeroWidthToBinary = string => (
+    string.split('﻿').map((char) => { // invisible &#65279;
+        if (char === '​') { // invisible &#8203;
+            return '1';
+        } else if (char === '‌') { // invisible &#8204;
+            return '0';
+        }
+        return ' '; // split up binary with spaces;
+    }).join('')
+);
+
+const binaryToText = string => (
+    string.split(' ').map(num => String.fromCharCode(parseInt(num, 2))).join('')
+);
+
 const chara_to_zero_width = {
 
     encode: function encode(text) {
@@ -24,6 +39,11 @@ const chara_to_zero_width = {
         return zeroWidthText;
     },
 
+    decode: function decode(zeroWidthText) {
+        const binaryText = zeroWidthToBinary(zeroWidthText);
+        const text = binaryToText(binaryText);
+        return text;
+    }
 };
 
 module.exports = chara_to_zero_width;
