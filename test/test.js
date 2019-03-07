@@ -6,4 +6,10 @@ describe('Chara to Zero Width', function () {
             assert.equal(ctzw.encode('text'), '‌﻿​﻿​﻿​﻿‌﻿​﻿‌﻿‌﻿‍﻿‌﻿​﻿​﻿‌﻿‌﻿​﻿‌﻿​﻿‍﻿‌﻿​﻿​﻿​﻿​﻿‌﻿‌﻿‌﻿‍﻿‌﻿​﻿​﻿​﻿‌﻿​﻿‌﻿‌');
         });
     });
+
+    describe('decode()', function () {
+        it('should decode', function () {
+            assert.equal(ctzw.decode('‌﻿​﻿​﻿​﻿‌﻿​﻿‌﻿‌﻿‍﻿‌﻿​﻿​﻿‌﻿‌﻿​﻿‌﻿​﻿‍﻿‌﻿​﻿​﻿​﻿​﻿‌﻿‌﻿‌﻿‍﻿‌﻿​﻿​﻿​﻿‌﻿​﻿‌﻿‌'), 'text');
+        });
+    });
 });
